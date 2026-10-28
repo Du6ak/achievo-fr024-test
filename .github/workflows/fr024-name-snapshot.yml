@@ -1,0 +1,28 @@
+name: FR024 snapshot experiment
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  name-snapshot:
+    name: fr024-name-snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # Base ref only: never execute a script from a test PR.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - name: Compare a single snapshot of open PR titles
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPERIMENT_FORCE_UNAVAILABLE: ${{ vars.EXPERIMENT_FORCE_UNAVAILABLE }}
+          EXPERIMENT_PAUSE_SECONDS: ${{ vars.EXPERIMENT_PAUSE_SECONDS }}
+        run: python3 experiment/check_snapshot.py
