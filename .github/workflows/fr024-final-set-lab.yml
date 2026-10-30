@@ -1,0 +1,31 @@
+name: FR024 final set lab
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: ['lab/fr024-guard-*']
+permissions:
+  contents: read
+jobs:
+  fr024-final-set-lab:
+    name: fr024-final-set-lab
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout proposed merge tree
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout validator from base
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted-base
+          persist-credentials: false
+      - name: Validate complete synthetic set
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${JAVA_HOME_21_X64:-}"
+          "$JAVA_HOME_21_X64/bin/java" -jar trusted-base/tools/guide-tools.jar check-title-set candidate
