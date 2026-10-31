@@ -1,0 +1,2 @@
+FR-024 synthetic required-check probe.
+This file contains no guide content and carries no production meaning.
