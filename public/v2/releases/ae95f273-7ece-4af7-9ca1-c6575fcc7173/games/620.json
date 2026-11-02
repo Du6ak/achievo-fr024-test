@@ -1,0 +1,25 @@
+{
+    "appId": 620,
+    "guides": [
+        {
+            "metadata": {
+                "schema_version": 1,
+                "id": "1fbe0108-fbb2-4c10-afad-c60057ebada2",
+                "app_id": 620,
+                "achievement_api_name": "EXAMPLE_ACHIEVEMENT",
+                "language": "en",
+                "title": "Synthetic CDN delivery fixture",
+                "guide_type": "quick",
+                "spoilers": false,
+                "summary": "Synthetic content for a public delivery test",
+                "author_name": "",
+                "translation_of": null,
+                "related_achievements": [],
+                "source_urls": []
+            },
+            "path": "releases/ae95f273-7ece-4af7-9ca1-c6575fcc7173/guides/620/en/6b603a4e9408b8dde51d531580e12de4ee193d5afe2b1ac751cadea4bd5d0825/1fbe0108-fbb2-4c10-afad-c60057ebada2.md",
+            "sha256": "518a9b40b271c8564ba171c024793559ab9044f91f6ef71eb4904573cd00d262"
+        }
+    ],
+    "schemaVersion": 1
+}
