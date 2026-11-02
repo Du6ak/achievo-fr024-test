@@ -1,0 +1,30 @@
+{
+  "name": "FR-024 other source control (synthetic)",
+  "on": {
+    "pull_request": {
+      "types": [
+        "opened",
+        "reopened",
+        "synchronize"
+      ],
+      "branches": [
+        "lab/fr024-verify-0179f6802f19"
+      ]
+    }
+  },
+  "permissions": {},
+  "jobs": {
+    "other-source-control": {
+      "if": "${{ github.event.pull_request.head.ref == 'lab/fr024-verify-0179f6802f19-other-source' && github.event.pull_request.head.repo.full_name == github.repository }}",
+      "name": "fr024-trusted-final-set",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 2,
+      "steps": [
+        {
+          "name": "Synthetic success only",
+          "run": "printf '%s\\n' 'Synthetic other-source success; not guide validation'"
+        }
+      ]
+    }
+  }
+}
